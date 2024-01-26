@@ -5,4 +5,5 @@
     <color name="bg_color">#DFECDB</color>
     <color name="blue">#5D9CEC</color>
     <color name="grey">#C8C9CB</color>
+    <color name="nav_bottom_bg">#FFFFFFFF</color>
 </resources>

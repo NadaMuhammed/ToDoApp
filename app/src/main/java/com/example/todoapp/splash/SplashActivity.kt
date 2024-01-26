@@ -1,9 +1,11 @@
-package com.example.todoapp
+package com.example.todoapp.splash
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
+import com.example.todoapp.R
+import com.example.todoapp.home.HomeActivity
 
 class SplashActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
