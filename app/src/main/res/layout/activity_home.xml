@@ -56,7 +56,7 @@
             android:layout_height="wrap_content"
             android:background="@android:color/transparent"
             app:elevation="0dp"
-            app:itemIconSize="35dp"
+            app:itemIconSize="30dp"
             app:itemIconTint="@color/nav_bottom_colors"
             app:itemPaddingTop="20dp"
             app:labelVisibilityMode="unlabeled"

@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".home.screens.ToDoListFragment">
+    tools:context=".home.screens.ToDoListFragment"
+    android:background="@color/bg_color">
 
     <View
         android:layout_width="match_parent"
@@ -33,5 +34,7 @@
     <androidx.recyclerview.widget.RecyclerView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/calendarCV"/>
+        app:layout_constraintTop_toBottomOf="@id/calendarCV"
+        tools:listitem="@layout/task_item"
+        android:layout_marginTop="20dp"/>
 </androidx.constraintlayout.widget.ConstraintLayout>
