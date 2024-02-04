@@ -1,4 +1,4 @@
-package com.example.todoapp.home.screens
+package com.example.todoapp.ui.home.screens
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment

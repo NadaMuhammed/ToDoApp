@@ -1,14 +1,14 @@
-package com.example.todoapp.home
+package com.example.todoapp.ui.home
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import com.example.todoapp.Constants
 import com.example.todoapp.R
-import com.example.todoapp.home.screens.SettingsFragment
-import com.example.todoapp.home.screens.ToDoListFragment
+import com.example.todoapp.ui.home.screens.SettingsFragment
+import com.example.todoapp.ui.home.screens.ToDoListFragment
 import com.example.todoapp.databinding.ActivityHomeBinding
-import com.example.todoapp.home.screens.AddNewTaskFragment
+import com.example.todoapp.ui.home.screens.AddNewTaskFragment
 
 class HomeActivity : AppCompatActivity() {
     lateinit var binding: ActivityHomeBinding
