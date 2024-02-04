@@ -9,4 +9,8 @@
     <string name="english">English</string>
     <string name="mode">Mode</string>
     <string name="light">Light</string>
+    <string name="add_new_task">Add New Task</string>
+    <string name="enter_your_task">Enter your task</string>
+    <string name="enter_task_description">Enter task Description</string>
+    <string name="select_time">Select time</string>
 </resources>

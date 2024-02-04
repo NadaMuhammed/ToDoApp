@@ -15,9 +15,7 @@
 
         <com.google.android.material.appbar.MaterialToolbar
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:layout_anchor="@id/app_bar_layout"
-            app:layout_anchorGravity="center">
+            android:layout_height="wrap_content">
 
             <TextView
                 android:id="@+id/title"
@@ -65,6 +63,7 @@
     </com.google.android.material.bottomappbar.BottomAppBar>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/addTaskFab"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:backgroundTint="@color/blue"

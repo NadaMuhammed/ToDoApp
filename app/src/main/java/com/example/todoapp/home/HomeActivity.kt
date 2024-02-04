@@ -3,10 +3,12 @@ package com.example.todoapp.home
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.fragment.app.Fragment
+import com.example.todoapp.Constants
 import com.example.todoapp.R
 import com.example.todoapp.home.screens.SettingsFragment
 import com.example.todoapp.home.screens.ToDoListFragment
 import com.example.todoapp.databinding.ActivityHomeBinding
+import com.example.todoapp.home.screens.AddNewTaskFragment
 
 class HomeActivity : AppCompatActivity() {
     lateinit var binding: ActivityHomeBinding
@@ -15,6 +17,20 @@ class HomeActivity : AppCompatActivity() {
         binding = ActivityHomeBinding.inflate(layoutInflater)
         setContentView(binding.root)
         setCurrentFragment(ToDoListFragment())
+        initListeners()
+    }
+
+    private fun setCurrentFragment(fragment: Fragment): Boolean {
+        supportFragmentManager.beginTransaction().replace(R.id.fragmentContainer, fragment).commit()
+        if (fragment is ToDoListFragment) {
+            binding.title.text = Constants.TO_DO_LIST
+        } else if (fragment is SettingsFragment) {
+            binding.title.text = Constants.SETTINGS
+        }
+        return true
+    }
+
+    private fun initListeners() {
         binding.bottomNavView.setOnItemSelectedListener {
             when (it.itemId) {
                 R.id.list -> setCurrentFragment(ToDoListFragment())
@@ -22,17 +38,10 @@ class HomeActivity : AppCompatActivity() {
                 else -> false
             }
         }
-    }
-
-    private fun setCurrentFragment(fragment: Fragment): Boolean {
-        supportFragmentManager.beginTransaction().replace(R.id.fragmentContainer, fragment).commit()
-        if (fragment is ToDoListFragment) {
-            binding.title.text = "To Do List"
-        } else if (fragment is SettingsFragment) {
-            binding.title.text = "Settings"
+        binding.addTaskFab.setOnClickListener {
+            val addNewTaskFragment = AddNewTaskFragment()
+            addNewTaskFragment.show(supportFragmentManager, "")
         }
-        return true
     }
-
 
 }
