@@ -40,6 +40,7 @@ class AddNewTaskFragment : BottomSheetDialogFragment(), TimePickerDialog.OnTimeS
         binding.addFab.setOnClickListener {
             if (validateInputs()) {
                 Toast.makeText(requireContext(), "Task Added", Toast.LENGTH_SHORT).show()
+                requireActivity().supportFragmentManager.beginTransaction().remove(this).commit()
             } else {
                 Toast.makeText(requireContext(), "Please Fill All The Fields", Toast.LENGTH_SHORT)
                     .show()
