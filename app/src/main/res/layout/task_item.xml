@@ -45,7 +45,6 @@
                 android:id="@+id/taskDescriptionTv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:fontFamily="sans-serif-medium"
                 android:textColor="@color/date_text_color"
                 android:textSize="14sp"
                 app:layout_constraintStart_toStartOf="@id/taskTitleTv"

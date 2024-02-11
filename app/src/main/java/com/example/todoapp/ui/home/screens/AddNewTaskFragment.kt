@@ -10,6 +10,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.core.widget.addTextChangedListener
 import com.example.todoapp.R
+import com.example.todoapp.clearExcess
 import com.example.todoapp.database.database.ToDoDatabase
 import com.example.todoapp.database.model.ToDo
 import com.example.todoapp.databinding.FragmentAddNewTaskBinding
@@ -17,7 +18,7 @@ import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import java.util.Calendar
 import kotlin.Boolean
 
-class AddNewTaskFragment : BottomSheetDialogFragment() {
+class AddNewTaskFragment(val onAdd: () -> Unit) : BottomSheetDialogFragment() {
     lateinit var binding: FragmentAddNewTaskBinding
     var selectedDate = Calendar.getInstance()
     override fun onCreateView(
@@ -34,7 +35,7 @@ class AddNewTaskFragment : BottomSheetDialogFragment() {
         super.onViewCreated(view, savedInstanceState)
         initListeners()
         binding.timeTv.text =
-            "${selectedDate.get(Calendar.DAY_OF_MONTH)} / ${selectedDate.get(Calendar.MONTH)+1} / ${
+            "${selectedDate.get(Calendar.DAY_OF_MONTH)} / ${selectedDate.get(Calendar.MONTH) + 1} / ${
                 selectedDate.get(Calendar.YEAR)
             }"
     }
@@ -45,7 +46,16 @@ class AddNewTaskFragment : BottomSheetDialogFragment() {
             if (validateInputs()) {
                 Toast.makeText(requireContext(), "Task Added", Toast.LENGTH_SHORT).show()
                 dismiss()
-                ToDoDatabase.getInstance(requireContext()).todoDao().addTask(ToDo(title = binding.taskTil.editText!!.text.toString(), description = binding.descriptionTil.editText!!.text.toString(), time = selectedDate.timeInMillis, isDone = false))
+                selectedDate.clearExcess()
+                ToDoDatabase.getInstance(requireContext()).todoDao().addTask(
+                    ToDo(
+                        title = binding.taskTil.editText!!.text.toString(),
+                        description = binding.descriptionTil.editText!!.text.toString(),
+                        time = selectedDate.timeInMillis,
+                        isDone = false
+                    )
+                )
+                onAdd.invoke()
             } else {
                 Toast.makeText(requireContext(), "Please Fill All The Fields", Toast.LENGTH_SHORT)
                     .show()
@@ -66,7 +76,7 @@ class AddNewTaskFragment : BottomSheetDialogFragment() {
                     selectedDate.set(Calendar.MONTH, month)
                     selectedDate.set(Calendar.DAY_OF_MONTH, day)
                     binding.timeTv.text =
-                        "${selectedDate.get(Calendar.DAY_OF_MONTH)} / ${selectedDate.get(Calendar.MONTH)+1} / ${
+                        "${selectedDate.get(Calendar.DAY_OF_MONTH)} / ${selectedDate.get(Calendar.MONTH) + 1} / ${
                             selectedDate.get(Calendar.YEAR)
                         }"
                 },

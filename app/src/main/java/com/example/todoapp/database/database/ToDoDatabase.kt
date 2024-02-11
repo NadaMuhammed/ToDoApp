@@ -16,7 +16,7 @@ abstract class ToDoDatabase: RoomDatabase() {
 
         fun getInstance(context: Context): ToDoDatabase {
             if (toDoDatabase == null){
-                toDoDatabase = Room.databaseBuilder(context, ToDoDatabase::class.java, "todo database").build()
+                toDoDatabase = Room.databaseBuilder(context, ToDoDatabase::class.java, "todo database").allowMainThreadQueries().build()
             }
             return toDoDatabase!!
         }

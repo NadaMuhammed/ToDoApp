@@ -28,9 +28,9 @@ class TodoAdapter(var todos: List<ToDo>) :
         holder.binding.taskTitleTv.text = todos[position].title
         holder.binding.taskDescriptionTv.text = todos[position].description
 //        holder.binding.checkBtn.setOnClickListener {
-//            onCheck.invoke()
-//            holder.binding.checkBtn.setBackgroundColor(Color.TRANSPARENT)
-//            holder.binding.checkBtn.setCompoundDrawablesWithIntrinsicBounds(null, null, null, null)
+//            onCheck.invoke(todos[position])
+////            holder.binding.checkBtn.setBackgroundColor(Color.TRANSPARENT)
+////            holder.binding.checkBtn.setCompoundDrawablesWithIntrinsicBounds(null, null, null, null)
 //        }
     }
 

@@ -19,7 +19,7 @@ interface Dao {
     fun getAllTasks(): List<ToDo>
 
     @Query("select * from ToDo where time = :time")
-    fun getAllTasksByTime(time: Long): List<ToDo>
+    fun getAllTasksByDate(time: Long): List<ToDo>
 
     @Update
     fun updateTask(toDo: ToDo)
