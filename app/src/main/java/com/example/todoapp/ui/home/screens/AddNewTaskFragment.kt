@@ -15,6 +15,7 @@ import com.example.todoapp.database.database.ToDoDatabase
 import com.example.todoapp.database.model.ToDo
 import com.example.todoapp.databinding.FragmentAddNewTaskBinding
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
+import com.prolificinteractive.materialcalendarview.CalendarDay
 import java.util.Calendar
 import kotlin.Boolean
 
@@ -85,6 +86,7 @@ class AddNewTaskFragment(val onAdd: () -> Unit) : BottomSheetDialogFragment() {
                 selectedDate.get(Calendar.DAY_OF_MONTH)
             )
             datePicker.show()
+            datePicker.datePicker.minDate = selectedDate.timeInMillis
             datePicker.getButton(DatePickerDialog.BUTTON_POSITIVE).setTextColor(Color.BLUE)
             datePicker.getButton(DatePickerDialog.BUTTON_NEGATIVE).setTextColor(Color.BLUE)
         }

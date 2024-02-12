@@ -54,4 +54,7 @@ dependencies {
     implementation("androidx.room:room-runtime:2.6.1")
     kapt("androidx.room:room-compiler:2.6.1")
 
+    //swipe layout
+    implementation("com.github.zerobranch:SwipeLayout:1.3.1")
+
 }
