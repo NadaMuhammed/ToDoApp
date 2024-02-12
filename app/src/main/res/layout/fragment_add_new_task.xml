@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@color/white"
+    android:background="@color/nav_bottom_bg"
     android:padding="10dp"
     tools:context=".ui.home.screens.AddNewTaskFragment">
 
@@ -62,7 +62,7 @@
         android:layout_marginStart="4dp"
         android:layout_marginTop="30dp"
         android:text="@string/select_time"
-        android:textSize="20dp"
+        android:textSize="20sp"
         app:layout_constraintStart_toStartOf="@id/descriptionTil"
         app:layout_constraintTop_toBottomOf="@id/descriptionTil" />
 

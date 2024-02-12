@@ -1,6 +1,7 @@
 package com.example.todoapp.ui.home.screens
 
 import android.app.AlertDialog
+import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
@@ -9,11 +10,13 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.example.todoapp.Constants
 import com.example.todoapp.database.database.ToDoDatabase
 import com.example.todoapp.database.model.ToDo
 import com.example.todoapp.databinding.FragmentToDoListBinding
 import com.example.todoapp.timeInMillis
 import com.example.todoapp.ui.adapters.TodoAdapter
+import com.example.todoapp.ui.home.TaskDetailsActivity
 import com.prolificinteractive.materialcalendarview.CalendarDay
 import java.util.Calendar
 
@@ -51,22 +54,29 @@ class ToDoListFragment : Fragment() {
                     refreshTodos()
                 }, 1500)
             }
+
+            override fun onTaskClick(toDo: ToDo, position: Int) {
+                val intent = Intent(activity, TaskDetailsActivity::class.java)
+                intent.putExtra(Constants.TODO, toDo)
+                startActivity(intent)
+            }
         }
     }
 
     private fun deleteTask(toDo: ToDo) {
         val builder = AlertDialog.Builder(requireContext())
-        builder.setMessage("Are you sure you want to Delete This Task?")
+        builder.setMessage(Constants.DELETE_MESSAGE)
             .setCancelable(false)
-            .setPositiveButton("Yes") { dialog, id ->
+            .setPositiveButton(Constants.YES) { dialog, id ->
                 ToDoDatabase.getInstance(requireContext()).todoDao().deleteTask(toDo)
                 refreshTodos()
             }
-            .setNegativeButton("No") { dialog, id ->
+            .setNegativeButton(Constants.NO) { dialog, id ->
                 dialog.dismiss()
             }
         val alert = builder.create()
         alert.show()
+        alert.setCanceledOnTouchOutside(true)
     }
 
     private fun handleEmptyList() {

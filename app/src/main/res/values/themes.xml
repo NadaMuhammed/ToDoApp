@@ -11,10 +11,11 @@
         <item name="cornerSize">30dp</item>
     </style>
 
-    <style name="TimePickerTheme" parent="ThemeOverlay.AppCompat.Dialog">
+    <style name="TimePickerTheme" parent="ThemeOverlay.MaterialComponents.MaterialCalendar">
         <item name="colorAccent">@color/blue</item>
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
+        <item name="colorPrimary">@color/blue</item>
     </style>
     <style name="Theme.ToDoApp" parent="Base.Theme.ToDoApp" />
 </resources>

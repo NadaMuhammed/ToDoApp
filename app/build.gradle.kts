@@ -2,6 +2,7 @@ plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
     id("kotlin-kapt")
+    kotlin("plugin.serialization") version "1.9.22"
 }
 
 android {
@@ -56,5 +57,7 @@ dependencies {
 
     //swipe layout
     implementation("com.github.zerobranch:SwipeLayout:1.3.1")
+
+    implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.6.0")
 
 }
