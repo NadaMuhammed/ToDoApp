@@ -71,6 +71,7 @@
                 android:hint="@string/this_is_the_title"
                 android:textColorHint="@color/date_text_color"
                 app:boxStrokeColor="@color/blue"
+                app:hintTextColor="@color/blue"
                 app:layout_constraintTop_toBottomOf="@id/editTaskTv">
 
                 <com.google.android.material.textfield.TextInputEditText
@@ -86,7 +87,7 @@
                 android:hint="@string/task_details"
                 android:textColorHint="@color/date_text_color"
                 app:boxStrokeColor="@color/blue"
-                app:hintTextColor="@color/hint_color"
+                app:hintTextColor="@color/blue"
                 app:layout_constraintTop_toBottomOf="@id/detailsTaskTitleTil">
 
                 <com.google.android.material.textfield.TextInputEditText

@@ -27,6 +27,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="40dp"
+        app:boxStrokeColor="@color/blue"
+        app:hintTextColor="@color/blue"
+        android:textColorHint="@color/date_text_color"
         app:layout_constraintTop_toBottomOf="@id/addTaskTv">
 
         <com.google.android.material.textfield.TextInputEditText
@@ -43,6 +46,9 @@
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="40dp"
         android:layout_marginTop="15dp"
+        app:boxStrokeColor="@color/blue"
+        app:hintTextColor="@color/blue"
+        android:textColorHint="@color/date_text_color"
         app:layout_constraintTop_toBottomOf="@id/taskTil">
 
         <com.google.android.material.textfield.TextInputEditText
