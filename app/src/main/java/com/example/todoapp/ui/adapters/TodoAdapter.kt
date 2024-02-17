@@ -16,7 +16,69 @@ class TodoAdapter(var todos: List<ToDo>) :
     RecyclerView.Adapter<TodoAdapter.TodoViewHolder>() {
     var onClick: OnClick? = null
 
-    class TodoViewHolder(var binding: TaskItemBinding) : RecyclerView.ViewHolder(binding.root)
+    inner class TodoViewHolder(var binding: TaskItemBinding) :
+        RecyclerView.ViewHolder(binding.root) {
+        fun bind(toDo: ToDo, position: Int) {
+            binding.taskTitleTv.text = toDo.title
+            binding.taskDescriptionTv.text = toDo.description
+            binding.checkBtn.setBackgroundDrawable(
+                ContextCompat.getDrawable(
+                    binding.checkBtn.context,
+                    R.drawable.rectangle
+                )
+            )
+            binding.checkBtn.text = ""
+            binding.checkBtn.setCompoundDrawablesWithIntrinsicBounds(
+                0,
+                R.drawable.ic_check,
+                0,
+                0
+            )
+            binding.checkBtn.setPadding(0, 20, 0, 0)
+            binding.verticalLine.setBackgroundDrawable(
+                ContextCompat.getDrawable(
+                    binding.verticalLine.context,
+                    R.drawable.dragging_bar
+                )
+            )
+            binding.taskTitleTv.setTextColor(
+                ContextCompat.getColor(
+                    binding.taskTitleTv.context,
+                    R.color.blue
+                )
+            )
+            binding.leftItem.setOnClickListener {
+                onClick?.onDeleteClick(todos[position], position)
+            }
+            binding.checkBtn.setOnClickListener {
+                onClick?.onCheckClick(todos[position], position)
+                binding.checkBtn.setBackgroundColor(Color.TRANSPARENT)
+                binding.checkBtn.setCompoundDrawablesWithIntrinsicBounds(
+                    null,
+                    null,
+                    null,
+                    null
+                )
+                binding.checkBtn.text = "Done!"
+                binding.checkBtn.setPadding(0, 0, 0, 0)
+                binding.verticalLine.setBackgroundDrawable(
+                    ContextCompat.getDrawable(
+                        binding.verticalLine.context,
+                        R.drawable.dragging_bar_done
+                    )
+                )
+                binding.taskTitleTv.setTextColor(
+                    ContextCompat.getColor(
+                        binding.taskTitleTv.context,
+                        R.color.green
+                    )
+                )
+            }
+            binding.dragItem.setOnClickListener {
+                onClick?.onTaskClick(todos[position], position)
+            }
+        }
+    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TodoViewHolder {
         return TodoViewHolder(
@@ -31,70 +93,8 @@ class TodoAdapter(var todos: List<ToDo>) :
     override fun getItemCount(): Int = todos.size
 
     override fun onBindViewHolder(holder: TodoViewHolder, position: Int) {
-        holder.binding.taskTitleTv.text = todos[position].title
-        holder.binding.taskDescriptionTv.text = todos[position].description
-        holder.binding.checkBtn.setBackgroundDrawable(
-            ContextCompat.getDrawable(
-                holder.binding.checkBtn.context,
-                R.drawable.rectangle
-            )
-        )
-        holder.binding.checkBtn.text = ""
-        holder.binding.checkBtn.setCompoundDrawablesWithIntrinsicBounds(
-            0,
-            R.drawable.ic_check,
-            0,
-            0
-        )
-        holder.binding.checkBtn.setPadding(0, 20, 0, 0)
-        holder.binding.verticalLine.setBackgroundDrawable(
-            ContextCompat.getDrawable(
-                holder.binding.verticalLine.context,
-                R.drawable.dragging_bar
-            )
-        )
-        holder.binding.taskTitleTv.setTextColor(
-            ContextCompat.getColor(
-                holder.binding.taskTitleTv.context,
-                R.color.blue
-            )
-        )
-
-//        holder.binding.checkBtn.setOnClickListener {
-//            onCheck.invoke(todos[position])
-//        }
-
-        holder.binding.leftItem.setOnClickListener {
-            onClick?.onDeleteClick(todos[position], position)
-        }
-        holder.binding.checkBtn.setOnClickListener {
-            onClick?.onCheckClick(todos[position], position)
-            holder.binding.checkBtn.setBackgroundColor(Color.TRANSPARENT)
-            holder.binding.checkBtn.setCompoundDrawablesWithIntrinsicBounds(
-                null,
-                null,
-                null,
-                null
-            )
-            holder.binding.checkBtn.text = "Done!"
-            holder.binding.checkBtn.setPadding(0, 0, 0, 0)
-            holder.binding.verticalLine.setBackgroundDrawable(
-                ContextCompat.getDrawable(
-                    holder.binding.verticalLine.context,
-                    R.drawable.dragging_bar_done
-                )
-            )
-            holder.binding.taskTitleTv.setTextColor(
-                ContextCompat.getColor(
-                    holder.binding.taskTitleTv.context,
-                    R.color.green
-                )
-            )
-
-        }
-        holder.binding.dragItem.setOnClickListener {
-            onClick?.onTaskClick(todos[position], position)
-        }
+        val toDo = todos[position]
+        holder.bind(toDo, position)
     }
 
     fun updateTodos(todos: List<ToDo>) {
